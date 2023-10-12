@@ -1,5 +1,5 @@
-T = int(input())
-result = 0
-for i in range(1,T+1):
-    result += i
-print(result)
+N = int(input())
+counter = 0
+for i in range(1,N+1):
+    counter += i
+print(counter)
