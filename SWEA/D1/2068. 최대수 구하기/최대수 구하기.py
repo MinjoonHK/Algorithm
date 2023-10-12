@@ -1,4 +1,4 @@
-T = int(input())
-for i in range(1,T+1):
-    arr = list(map(int,input().split()))
-    print(f"#{i}",max(arr))
+N = int(input())
+for i in range(1,N+1):
+    A = list(map(int,input().split()))
+    print(f"#{i}",max(A))
