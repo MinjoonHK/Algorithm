@@ -1,4 +1,4 @@
-T = int(input())
-for i in range(1,T+1):
-    if T % i == 0:
+N = int(input())
+for i in range(1,N+1):
+    if(N % i == 0):
         print(i,end=" ")
