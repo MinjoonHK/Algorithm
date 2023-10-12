@@ -1,3 +1,3 @@
-T = input()
-for i in range(len(T)):
-    print(ord(T[i])-64,end=" ")
+word_list = list(str(input()))
+for i in word_list:
+    print(ord(i) - 64,end=" ")
