@@ -1,4 +1,3 @@
 def solution(seoul):
-    Kim_Position = seoul.index("Kim")
-    answer = "김서방은 %d에 있다" %Kim_Position
-    return answer
+    position_Kim = seoul.index("Kim")
+    return f"김서방은 {position_Kim}에 있다"
