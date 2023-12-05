@@ -1,24 +1,26 @@
-    import java.io.*;
-    import java.util.*;
-
-    public class Main {
-        public static void main(String[] args) throws IOException {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String str = br.readLine();
-            StringTokenizer st = new StringTokenizer(str, " ");
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(br.readLine());
-            if(c + b >= 60){
-                a += (c+b) / 60;
-                b = (b+c) % 60;
-                if(a >= 24){
-                    a -= 24;
-                }
-            }
-            else{
-                b += c;
-            }
-            System.out.println(a+" "+b);
-        }
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+ 
+public class Main {
+    public static void main(String[] args) throws IOException {
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+ 
+        int C = Integer.parseInt(br.readLine());
+ 
+        int min = 60 * A + B;   // 시 -> 분
+        min += C;
+ 
+        int hour = (min / 60) % 24;
+        int minute = min % 60;
+ 
+        System.out.println(hour + " " + minute);
+ 
     }
+}
