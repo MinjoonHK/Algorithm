@@ -18,14 +18,20 @@ public class Main {
             else if(cmd == 0){
                 queue.poll();
             }
-            else{
+            else if(buffer > queue.size()){
                 queue.offer(cmd);
             }
         }
-        for(int i:queue){
-            sb.append(i);
-            sb.append(" ");
+        if(queue.size() == 0){
+            System.out.println("empty");
         }
-        System.out.println(sb);
+        else{
+            for(int i:queue){
+                sb.append(i);
+                sb.append(" ");
+            }
+            System.out.println(sb);
+        }
+
     }
 }
