@@ -13,22 +13,27 @@ public class Main {
         int C = Integer.parseInt(st.nextToken());
         int D = Integer.parseInt(st.nextToken());
 
-        int numerator = A * D + B * C;
-        int denominator = B * D;
+        int finalNum = A * D + B * C;
+        int finalDem = B * D;
 
-        int mod = gcd(numerator, denominator);
-        numerator /= mod;
-        denominator /= mod;
+        int mod = gcd(finalNum,finalDem);
+        finalDem /= mod;
+        finalNum /= mod;
 
-        System.out.println(numerator+" "+denominator);
+        System.out.print(finalNum+" "+finalDem);
     }
 
     public static int gcd(int a, int b) {
-        if(b == 0){
+        
+        if (a <= b) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        if (b == 0) {
             return a;
         }
-        else{
-            return gcd(b,a%b);
-        }
+        return gcd(b , a % b);
     }
 }
