@@ -4,73 +4,66 @@ import java.io.*;
 
 public class Main{
 
-    static int[][] graph;
+    static int[][] map;
+    static int N;
 
+    static int counter;
     static boolean[][] visited;
-    static int[] dx;
-    static int[] dy;
 
-    static List<Integer> result;
+    static int[] dx = {-1,1,0,0};
+    static int[] dy = {0,0,-1,1};
 
-    static Queue<int[]> queue;
-
-    static int counter,N;
-
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args)throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
 
-        result = new LinkedList<>();
-        graph = new int[N][N];
+        ArrayList<Integer> result = new ArrayList<>();
+
+        N = Integer.parseInt(br.readLine());
+
         visited = new boolean[N][N];
-        counter = 1;
+        map = new int[N][N];
 
-        for(int i=0; i<N; i++){
-            String str = br.readLine();
-            for(int j=0; j<N; j++){
-                graph[i][j] = str.charAt(j)-'0';
+        for(int i=0; i<N;i++){
+            String s = br.readLine();
+            for(int j=0; j<N;j++){
+                map[i][j] = Character.getNumericValue(s.charAt(j));
             }
         }
 
-        for(int i=0; i<N; i++){
-            for(int j=0; j<N; j++){
-                if(graph[i][j] == 1 && !visited[i][j]){
-                    bfs(i,j);
+        counter = 1;
+
+        for(int i=0; i<N;i++){
+            for(int j=0; j<N;j++){
+                if(map[i][j] != 0 && !visited[i][j]){
+                    dfs(i,j);
                     result.add(counter);
                     counter = 1;
                 }
             }
         }
-        Collections.sort(result);
-        System.out.println(result.size());
-        for(int i : result){
-            System.out.println(i);
-        }
 
+        Collections.sort(result);
+        
+        System.out.println(result.size());
+        for(int i=0; i<result.size();i++){
+            System.out.println(result.get(i));
+        }
     }
 
-    static void bfs(int x, int y){
-        dx = new int[] {-1,1,0,0};
-        dy = new int[] {0,0,-1,1};
-        queue = new LinkedList<>();
-        queue.add(new int[]{x,y});
+    static void  dfs(int x, int y){
         visited[x][y] = true;
-        while(!queue.isEmpty()){
-            int curx = queue.peek()[0];
-            int cury = queue.peek()[1];
-            queue.poll();
-            for(int i=0; i<4; i++){
-                int nx = curx + dx[i];
-                int ny = cury + dy[i];
 
-                if(nx >= 0 && ny >= 0 && nx < N && ny < N){
-                    if(graph[nx][ny] == 1 && !visited[nx][ny]){
-                        queue.add(new int[]{nx,ny});
-                        visited[nx][ny] = true;
-                        counter++;
-                    }
-                }
+        for(int i=0; i<4; i++){
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+
+            if(nx <0 || nx >= N || ny <0 || ny >= N){
+                continue;
+            }
+
+            if(map[nx][ny] != 0 && !visited[nx][ny]){
+                counter++;
+                dfs(nx,ny);
             }
         }
     }
