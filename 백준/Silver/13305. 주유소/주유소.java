@@ -9,21 +9,21 @@ public class Main{
         StringTokenizer st;
 
         int N = Integer.parseInt(br.readLine());
-        int[] dist = new int[N-1];
-        int[] cost = new int[N];
+        long[] dist = new long[N-1];
+        long[] cost = new long[N];
 
         st = new StringTokenizer(br.readLine());
         for(int i=0; i<N-1; i++){
-            dist[i] = Integer.parseInt(st.nextToken());
+            dist[i] = Long.parseLong(st.nextToken());
         }
 
         st = new StringTokenizer(br.readLine());
         for(int i=0; i<N; i++){
-            cost[i] = Integer.parseInt(st.nextToken());
+            cost[i] = Long.parseLong(st.nextToken());
         }
 
-        int curCost = cost[0];
-        int answer = 0;
+        long curCost = cost[0];
+        long answer = 0;
         for(int i=0; i<N-1; i++){
             if(curCost > cost[i]){
                 curCost = cost[i];
