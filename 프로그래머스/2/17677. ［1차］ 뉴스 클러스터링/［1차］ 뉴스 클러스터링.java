@@ -51,14 +51,8 @@ class Solution {
  
 		double a = intersection.size();
 		double b = union.size();
-
-   		double jakard = 0;
-	
-		if(union.size() == 0)
-			jakard = 1;
-		else
-			jakard = (double) intersection.size() / (double) union.size();
-
-		return (int) (jakard * 65536);
+   		double jakard = (union.size() == 0) ? 1 : ((double) intersection.size() / (double) union.size());
+        	
+	    return (int) (jakard * 65536);
     }
 }
