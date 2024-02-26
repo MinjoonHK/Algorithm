@@ -28,8 +28,8 @@ public class Main{
             int input = Integer.parseInt(br.readLine());
             int temp = 0;
 
-            for(int j=2; j<=input / 2; j++){
-                if(!isPrime[j] && !isPrime[input - j]){
+            for(int j=2; j<=input / 2; j++){ // 예: 8일때 8까지 루프를 돈다면 => 3,5 와 5,3 은 중복
+                if(!isPrime[j] && !isPrime[input - j]){ // 예: 3 도 소수이고 6 -3 = 3 역시 소수 => 하나의 파티션
                         temp++;
                 }
             }
