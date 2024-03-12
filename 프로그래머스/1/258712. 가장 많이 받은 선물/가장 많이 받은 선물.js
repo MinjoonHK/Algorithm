@@ -22,7 +22,6 @@ function solution(friends, gifts) {
         for(let j=0; j<friends.length; j++){ // muzi, ryan, frodo, neo
             let send = dict.get(friends[i]).filter((value) => value == friends[j]).length
             let receive = dict.get(friends[j]).filter((value) => value == friends[i]).length
-            // console.log(friends[i],friends[j],send,receive, dict.get(friends[i]));
             if(send > receive){
                 counter++;
             }
