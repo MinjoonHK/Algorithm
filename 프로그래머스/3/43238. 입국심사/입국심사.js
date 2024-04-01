@@ -1,15 +1,16 @@
-var floor = n => Math.floor(n);
-
 function solution(n, times) {
     var answer = 0;
 
     return s(n,times);
 }
 function s(n, times ) {
-    var min =0 , max = n * Math.max.apply(null, times);
+    var min =0 ;
+    var max = n * Math.max(...times);
     while (min <= max) {
-        var mid = floor((min + max) / 2);
-        var maxInMid = times.reduce((acc,cur)=>acc += floor(mid/cur) , 0);
+        //중앙값
+        var mid = Math.floor((min + max) / 2);
+        //합구하기
+        var maxInMid = times.reduce((acc,cur)=>acc += Math.floor(mid/cur) , 0);
         if( n <= maxInMid) {
             max = mid -1;
         } else {
