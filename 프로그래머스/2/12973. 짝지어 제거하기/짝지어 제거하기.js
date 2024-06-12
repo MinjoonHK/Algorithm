@@ -1,18 +1,14 @@
-function solution(s) {
-    let answer = 0;
-
-    // 1)
+function solution(s)
+{
+    let temp = s.split("");
     let stack = [];
-
-    for(let i=0; i<s.length; i++) {
-
-        // 2)
-        if(stack[stack.length-1] == s[i]) {
-           stack.pop(); 
-        } else {
-            stack.push(s[i]);
+    for(const word of temp){
+        if(stack.length == 0 || stack[stack.length -1] != word){
+            stack.push(word);
+        }
+        else{
+            stack.pop();
         }
     }
-
     return stack.length == 0 ? 1 : 0;
 }
