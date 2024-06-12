@@ -1,31 +1,41 @@
 function solution(s) {
-    let answer = 0;
+    var answer = 0;
+    let arr = s.split("");
+    for(let i=0; i<arr.length-1; i++){
+        if(check(arr)){
+            answer +=1;
+        }
+        arr.push(arr.shift());
+    }
+    return answer;
+}
 
-
-    for(let i=0; i<s.length; i++) {
-
-        let stack = [];
-
-
-        for(let j=0; j<s.length; j++) {
-
-            if(s[j] == ')' && stack[stack.length-1] == '(' 
-               || s[j] == ']' && stack[stack.length-1] == '[' 
-               || s[j] == '}' && stack[stack.length-1] == '{') {
-                stack.pop();
-            } else {
-                stack.push(s[j]);
+function check(arr){
+    let stack = [];
+    for(let i=0; i<arr.length; i++){
+        if(arr[i] == "[" || arr[i] == "{" || arr[i] == "("){
+            stack.push(arr[i]);
+        }
+        else{
+            if(stack.length == 0){
+                return false;
+            }
+            else if(arr[i] == "}"){
+                if(stack.pop() != "{"){
+                    return false;
+                }
+            }
+            else if(arr[i] == "]"){
+                if(stack.pop() != "["){
+                    return false;
+                }
+            }
+            else if(arr[i] == ")"){
+                if(stack.pop() != "("){
+                    return false;
+                }
             }
         }
-
-
-        if(stack.length == 0) {
-            answer += 1;
-        }
-
-
-        s = s.slice(1) + s[0];
     }
-
-    return answer;
+    return stack.length == 0 ? true : false;
 }
