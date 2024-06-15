@@ -1,16 +1,14 @@
 function solution(n)
 {
-    let counter = 0;
-    
-    while(n > 0){
-        if(n % 2 == 0){
+    let answer = 0;
+    while(n !== 0){
+        if(n % 2 ==0){
             n /= 2;
         }
         else{
             n -= 1;
-            counter++;
+            answer +=1;
         }
     }
-
-    return counter;
+    return answer;
 }
