@@ -1,20 +1,16 @@
-import java.io.*;
+
 import java.util.*;
-import java.util.stream.IntStream;
+import java.io.*;
 
 public class Main {
-
-    public static void main(String[] args) throws IOException{
-
+    public static void main(String[] args)throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int answer = 0;
         int N = Integer.parseInt(br.readLine());
-        String s = br.readLine();
-        String[] arr = s.split("");
-        for(String i : arr){
-            int a = Integer.parseInt(i);
-            answer += a;
+        String[] number = br.readLine().split("");
+        int sum = 0;
+        for(int i=0; i<N; i++){
+            sum += Integer.parseInt(number[i]);
         }
-        System.out.println(answer);
+        System.out.println(sum);
     }
 }
