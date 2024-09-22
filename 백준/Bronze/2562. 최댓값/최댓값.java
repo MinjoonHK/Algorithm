@@ -1,15 +1,20 @@
+
 import java.util.*;
 import java.io.*;
 
 public class Main {
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        List<Integer> arr = new ArrayList<>(9);
-        for(int i=0; i<9;i++){
-            arr.add(Integer.parseInt(br.readLine()));
+        int max = 0;
+        int index = 0;
+        for(int i=0; i<9; i++){
+            int input = Integer.parseInt(br.readLine());
+            if(input>max){
+                max = input;
+                index = i+1;
+            }
         }
-        System.out.println(Collections.max(arr));
-        System.out.println(arr.indexOf(Collections.max(arr))+1);
-    }
+        System.out.println(max);
+        System.out.println(index);
+    }    
 }
