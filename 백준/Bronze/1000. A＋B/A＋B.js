@@ -1,4 +1,4 @@
-const fs = require('fs');
-const inputData = fs.readFileSync('/dev/stdin').toString().split(' ').map(value => +value);
-const [a,b] = inputData;
-console.log(a+b);
+const input = require("fs").readFileSync("/dev/stdin").toString().trim().split(" ");
+const a = parseInt(input[0]);
+const b = parseInt(input[1]);
+console.log(a + b);
