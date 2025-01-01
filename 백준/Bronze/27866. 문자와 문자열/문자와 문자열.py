@@ -1,3 +1,3 @@
-word = input()
-T = int(input())
-print(word[T-1])
+S = input()
+index = int(input())
+print(S[index-1])
